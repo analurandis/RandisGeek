@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GeekBurger.Products.Contract\GeekBurger.Products.Contract.csproj" />
+    <ProjectReference Include="..\GeekBurger.Products.Infra\GeekBurger.Products.Infra.csproj" />
   </ItemGroup>
 
 </Project>

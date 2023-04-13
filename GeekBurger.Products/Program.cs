@@ -1,15 +1,26 @@
+using GeekBurger.Products.Configuration;
+using GeekBurger.Products.Infra.Extension;
+using GeekBurger.Products.Infra.Repository;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddDbContext<ProductsDbContext>(options =>
+    options.UseInMemoryDatabase(databaseName: "geekburger-products"));
+builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+ConfigurationServices.ConfiguracaoDosServicos(builder.Services);
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
