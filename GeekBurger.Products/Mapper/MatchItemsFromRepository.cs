@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GeekBurger.Products.Contract;
 using GeekBurger.Products.Contract.Model;
+using GeekBurger.Products.Infra.Model;
 using GeekBurger.Products.Infra.Repository;
 
 namespace GeekBurger.Products.Mapper
@@ -16,24 +16,21 @@ namespace GeekBurger.Products.Mapper
 
         public void Process(ItemToUpsert source, Item destination)
         {
-
-        }
-
-        public void Process(ItemToUpsert source, Item destination, ResolutionContext context)
-        {
             var fullListOfItems =
-                _productRepository.GetFullListOfItems();
+                            _productRepository.GetFullListOfItemsAsync().Result;
 
             var itemFound = fullListOfItems?
                 .FirstOrDefault(item => item.Name
                 .Equals(source.Name,
                     StringComparison.InvariantCultureIgnoreCase));
-            /*
+
             if (itemFound != null)
-               // destination.ItemId = itemFound.Items.FirstOrDefault(p=> p.ItemId);
+                destination.ItemId = itemFound.ItemId;
             else
-                destination.ItemId = Guid.NewGuid();*/
+                destination.ItemId = Guid.NewGuid();
+
         }
+
     }
 
 }

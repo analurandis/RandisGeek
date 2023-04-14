@@ -4,6 +4,19 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>GeekBurger.Products.Contract</Title>
+    <Description>Contrato GeekBurger.Products.Contract </Description>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Version>1.1.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeekBurger.Products.Infra\GeekBurger.Products.Infra.csproj" />
+  </ItemGroup>
 
 </Project>

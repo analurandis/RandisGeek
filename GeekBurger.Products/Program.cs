@@ -11,14 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<ProductsDbContext>(options =>
-    options.UseInMemoryDatabase(databaseName: "geekburger-products"));
-builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
+ConfigurationServices.ConfiguracaoDosServicos(builder.Services);
+
 var app = builder.Build();
 
 
-ConfigurationServices.ConfiguracaoDosServicos(builder.Services);
 
 
 if (app.Environment.IsDevelopment())

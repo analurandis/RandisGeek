@@ -1,28 +1,23 @@
 ﻿using AutoMapper;
-using GeekBurger.Products.Contract;
 using GeekBurger.Products.Contract.Model;
 using GeekBurger.Products.Infra.Model;
 using GeekBurger.Products.Infra.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GeekBurger.Products.Products.Mapper
+
+namespace GeekBurger.Products.Mapper
 {
-    public class MatchStoreFromRepository :IMappingAction<ProductToUpsert, Store>
+    public class MatchStoreFromRepository :IMappingAction<ProductToUpsert, Product>
     {
-        private IStoreRepository _storeRepository;
-        public MatchStoreFromRepository(IStoreRepository
-            storeRepository)
+        private IProductsRepository _productsRepository;
+        public MatchStoreFromRepository(IProductsRepository
+            productsRepository)
         {
-            _storeRepository = storeRepository;
+            _productsRepository = productsRepository;
         }
-
-        public void Process(ProductToUpsert source, Store destination, ResolutionContext context)
+        public void Process(ProductToUpsert source,Product destination)
         {
-            var store = _storeRepository.GetStoreByStoreName(source.StoreName);
+            var store =
+                 _productsRepository.GetStoreByName(source.StoreName).Result;
 
             if (store != null)
                 destination.StoreId = store.StoreId;

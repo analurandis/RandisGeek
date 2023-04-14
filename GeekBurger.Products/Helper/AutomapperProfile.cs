@@ -2,6 +2,7 @@
 using GeekBurger.Products.Contract.Mapper;
 using GeekBurger.Products.Contract.Model;
 using GeekBurger.Products.Infra.Model;
+using GeekBurger.Products.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,8 @@ namespace GeekBurger.Products.Helper
         {
             CreateMap<Product, ProductToGet>();
             CreateMap<Item, ItemToGet>();
-            CreateMap<ProductToUpsert, Product>()
-                .AfterMap<MatchStoreFromRepository>();
-            CreateMap<ItemToUpsert, Item>()
-                .AfterMap<MatchItemsFromRepository>();
+            CreateMap<ProductToUpsert, Product>().AfterMap<MatchStoreFromRepository>();
+            CreateMap<ItemToUpsert, Item>().AfterMap<MatchItemsFromRepository>();
 
         }
 
