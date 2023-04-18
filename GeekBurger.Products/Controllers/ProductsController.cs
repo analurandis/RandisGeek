@@ -1,9 +1,5 @@
-﻿using AutoMapper;
-using GeekBurger.Products.Contract;
-using GeekBurger.Products.Contract.Mapper;
-using GeekBurger.Products.Contract.Model;
-using GeekBurger.Products.Infra.Repository;
-using GeekBurger.Products.Service.Interfaces;
+﻿using GeekBurger.Products.Contract.Model;
+using GeekBurger.Products.Infra.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekBurger.Products.Controllers
@@ -38,6 +34,7 @@ namespace GeekBurger.Products.Controllers
                     return BadRequest();
 
                 bool inserted = await _productService.Add(productToAdd);
+                _productService.Save();
 
                 if (!inserted)
                     return new UnprocessableEntityResult();

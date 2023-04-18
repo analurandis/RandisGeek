@@ -1,4 +1,6 @@
 ﻿using GeekBurger.Products.Infra.Model;
+using GeekBurger.Products.Infra.Services;
+using GeekBurger.Products.Infra.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,12 @@ namespace GeekBurger.Products.Infra.Repository
     public class ProductsRepository : BaseRepository<Product>, IProductsRepository
     {
         private ProductsDbContext _context;
+        private IProductChangedService _productChangedService;
 
-        public ProductsRepository(ProductsDbContext context) : base(context)
+        public ProductsRepository(ProductsDbContext context, IProductChangedService productChangedService) : base(context)
         {
             _context = context;
+            _productChangedService = productChangedService;
         }
 
         public async Task<bool> AddProductAsync(Product product)
@@ -56,5 +60,14 @@ namespace GeekBurger.Products.Infra.Repository
             return await _context.Stores?.FirstOrDefaultAsync(f => f.Name == storeName);
         }
 
+        public void Save()
+        {
+            _productChangedService
+                .AddToMessageList(_context.ChangeTracker.Entries<Product>());
+
+            _context.SaveChanges();
+
+            _productChangedService.SendMessagesAsync();
+        }
     }
 }

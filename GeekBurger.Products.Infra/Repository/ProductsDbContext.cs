@@ -19,5 +19,6 @@ namespace GeekBurger.Products.Infra.Repository
         public DbSet<Store> Stores { get; set; }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<ProductChangedEvent> ProductChangedEvents { get; set; }
     }
 }

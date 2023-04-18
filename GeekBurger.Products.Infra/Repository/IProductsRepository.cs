@@ -15,5 +15,6 @@ namespace GeekBurger.Products.Infra.Repository
         Task<List<Item>> GetFullListOfItemsAsync();
         Task<Store> GetStoreByName(string storeName);
         Task<Product> GetProductByFilters(Expression<Func<Product, bool>> filters);
+        void Save();
     }
 }
