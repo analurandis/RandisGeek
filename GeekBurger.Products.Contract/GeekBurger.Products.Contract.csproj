@@ -15,4 +15,8 @@
     <PackageReference Include="AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GeekBurger.Products.Infra\GeekBurger.Products.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
