@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekBus", "GeekBus\GeekBus.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekBurger.Products.Infra", "GeekBurger.Products.Infra\GeekBurger.Products.Infra.csproj", "{ED1537CE-EB3A-41EE-B35B-B4E20FD39A23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekBurguer.Products.UnitTests", "GeekBurguer.Products.UnitTests\GeekBurguer.Products.UnitTests.csproj", "{7E66D039-D00B-4F21-AED4-3EDF066D6023}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ED1537CE-EB3A-41EE-B35B-B4E20FD39A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED1537CE-EB3A-41EE-B35B-B4E20FD39A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED1537CE-EB3A-41EE-B35B-B4E20FD39A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E66D039-D00B-4F21-AED4-3EDF066D6023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E66D039-D00B-4F21-AED4-3EDF066D6023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E66D039-D00B-4F21-AED4-3EDF066D6023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E66D039-D00B-4F21-AED4-3EDF066D6023}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
